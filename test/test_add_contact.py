@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-from selenium import webdriver
 import pytest
-from application import Application
-from contact import *
+from fixture.application import Application
+from model.contact import *
 
 @pytest.fixture
 
