@@ -1,5 +1,5 @@
 class GroupHelper:
-    def __init__(self,app):
+    def __init__(self, app):
         self.app=app
 
     def open_groups_page(self):
@@ -44,3 +44,12 @@ class GroupHelper:
         wd.find_element_by_name("delete").click()
         self.return_to_group_page()
 
+    def modify_first_group(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_name("edit").click()
+
+    def confirm_modify_first_group(self):
+        wd = self.app.wd
+        wd.find_element_by_name("update").click()

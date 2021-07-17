@@ -1,7 +1,9 @@
 from selenium.webdriver.support.select import Select
+from model.contact import *
 class ContactHelper:
-    def __init__(self,app):
+    def __init__(self, app):
         self.app=app
+
     def fill_name(self, contact):
         # fill first name
         wd = self.app.wd
@@ -99,3 +101,15 @@ class ContactHelper:
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+
+    def contact_full(self):
+        wd = self.app.wd
+        self.fill_name(ContactInfoName(first_name="diana", middle_name="olegovna", last_name="ozerova"))
+        self.fill_nickname("ozerovadiana")
+        self.fill_title("qwerty")
+        self.fill_company("google")
+        self.fill_address("russia")
+        self.fill_phones(ContactPhones(mobile="9853811234", home_phone="123456", work_phone="1234567"))
+        self.fill_emails(ContactEmails(email="sss@ss.ru", email2="sssss@ssss.ru", email3="qwer@fr.ru"))
+        self.fill_bday(ContactInfoBday(bday_day="7", bday_month="May", bday_year="1996"))
+        self.fill_secondary(ContactSecondary(address2="russia,moscow", phone2="1", notes="wwww"))
